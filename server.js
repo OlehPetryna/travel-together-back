@@ -12,19 +12,21 @@ app.use(cors());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.post('/fetch-tours', function (req, res) {
+app.post('/fetch-tours', async function (req, res) {
     const body = req.body;
 
-    const tours = toursDb.find(body);
+    const tours = await toursDb.find(body);
 
-    res.json(tours)
+    console.log({tours: tours});
+
+    res.json({tours: tours})
 });
 
-app.post('/add-tours', function (req, res) {
+app.post('/add-tours', async function (req, res) {
     const body = req.body;
     const tours = body.tours;
 
-    const count = toursDb.insert(tours).insertedCount;
+    const count = await toursDb.insert(tours).insertedCount;
 
     res.json({inserted: count});
 });
