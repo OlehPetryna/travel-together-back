@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors');
+
 const db = require('./db');
 const toursDb = new db();
 
@@ -8,6 +10,7 @@ toursDb.connect();
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(cors({'origin': 'http://localhost'}));
 
 app.post('/fetch-tours', function (req, res) {
     const body = req.body;
