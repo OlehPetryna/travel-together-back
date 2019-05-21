@@ -5,7 +5,7 @@ const dbName = 'travel-together';
 const collectionName = 'tours';
 
 class DB {
-    constructor(props) {
+    constructor() {
         this.client = new client(url, {useNewUrlParser: true});
     }
 

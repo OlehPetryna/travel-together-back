@@ -9,15 +9,15 @@ toursDb.connect();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.post('/fetch-tours', async function (req, res) {
+app.post('/fetch-tours', function (req, res) {
     const body = req.body;
 
-    const tours = await toursDb.find(body);
+    const tours = toursDb.find(body);
 
     res.json(tours)
 });
 
-app.post('/add-tours', async function (req, res) {
+app.post('/add-tours', function (req, res) {
     const body = req.body;
     const tours = body.tours;
 
