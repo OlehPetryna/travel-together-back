@@ -17,6 +17,8 @@ class DB {
                 let { key, from, to, isDate = false } = range;
                 query[key] = {'$gte': isDate ? new Date(from) : from, '$lte': isDate ? new Date(to) : to}
             }
+
+            delete query.ranges;
         }
 
         let findQuery = this.collection().find(query);
