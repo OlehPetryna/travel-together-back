@@ -1,6 +1,6 @@
 const client = require('mongodb').MongoClient;
 
-const helper = require('helper');
+const helper = require('./helper');
 
 const url = 'mongodb://localhost:27017';
 const dbName = 'travel-together';
