@@ -17,8 +17,6 @@ app.post('/fetch-tours', async function (req, res) {
 
     const tours = await toursDb.find(body);
 
-    console.log({tours: tours});
-
     res.json({tours: tours})
 });
 
