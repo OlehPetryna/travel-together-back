@@ -36,7 +36,8 @@ class DB {
         }
 
         const elements = await findQuery.toArray();
-        const totalCount = await this.collection().estimatedDocumentCount();
+
+        const totalCount = await this.collection().countDocuments(query);
 
         return {tours: elements, totalCount: totalCount};
     }
