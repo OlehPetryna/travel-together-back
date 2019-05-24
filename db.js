@@ -35,7 +35,10 @@ class DB {
             findQuery.sort(orderBy.key, orderBy.dir);
         }
 
-        return await findQuery.toArray();
+        const elements = await findQuery.toArray();
+        const totalCount = await this.collection().estimatedDocumentCount();
+
+        return {tours: elements, totalCount: totalCount};
     }
 
     async insert (docs) {
